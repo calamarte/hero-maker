@@ -5,6 +5,7 @@ import es.atsistemas.heromaker.respositories.HeroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,5 +18,9 @@ public class HeroService extends AbstractService<Hero, Integer> {
 
     public Optional<Hero> findByName(String name){
         return ((HeroRepository) repository).findByName(name);
+    }
+
+    public List<Hero> findByNameContains(String name){
+        return ((HeroRepository) repository).findByNameContainsIgnoreCase(name);
     }
 }
