@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @Component
 public class StartUpListener implements ApplicationListener<ContextRefreshedEvent> {
 
-    private static Logger logger = LoggerFactory.getLogger(StartUpListener.class);
+    private static final Logger logger = LoggerFactory.getLogger(StartUpListener.class);
 
     @Autowired
     private HeroService heroService;
