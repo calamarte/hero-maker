@@ -16,7 +16,7 @@ public abstract class AbstractService<T extends AbstractEntity, ID> {
     private static final Logger logger = LoggerFactory.getLogger(AbstractEntity.class);
 
     private final Class<? extends AbstractEntity> clazz;
-    protected CrudRepository repository;
+    protected CrudRepository<T, ID> repository;
 
     protected AbstractService(CrudRepository<T, ID> repository, Class<? extends AbstractEntity> clazz){
         this.repository = repository;
