@@ -12,6 +12,7 @@ public class Hero extends AbstractEntity<Integer>{
         SUPER_VELOCITY,
         SUPER_STRENGTH,
         SUPER_ELASTIC,
+        SUPER_RICH,
         INVISIBILITY,
         TELEPORT,
         ABSOLUTE,
@@ -22,6 +23,13 @@ public class Hero extends AbstractEntity<Integer>{
 
     @Enumerated(EnumType.STRING)
     private Power power = Power.NO_POWER;
+
+    public Hero(){}
+
+    public Hero(String name, Power power){
+        this.name = name;
+        this.power = power;
+    }
 
     public String getName() {
         return name;

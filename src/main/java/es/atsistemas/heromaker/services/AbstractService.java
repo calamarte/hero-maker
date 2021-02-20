@@ -37,12 +37,28 @@ public abstract class AbstractService<T extends AbstractEntity, ID> {
         T result = null;
 
         try {
-            result = (T) this.repository.save(entity);
+            result = this.repository.save(entity);
         }catch (DataIntegrityViolationException e){
             logger.debug("Violación de integridad", e);
 
             if(e.getCause() instanceof ConstraintViolationException){
                 throw new es.atsistemas.heromaker.exceptions.ConstraintViolationException(entity);
+            }
+        }
+
+        return result;
+    }
+
+    public Iterable<T> saveAll(Iterable<T> entities){
+        Iterable<T> result = null;
+
+        try{
+            result = this.repository.saveAll(entities);
+        }catch (DataIntegrityViolationException e){
+            logger.debug("Violación de integridad", e);
+
+            if(e.getCause() instanceof ConstraintViolationException){
+                throw new es.atsistemas.heromaker.exceptions.ConstraintViolationException((AbstractEntity) entities);
             }
         }
 
