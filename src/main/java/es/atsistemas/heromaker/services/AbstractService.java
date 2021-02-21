@@ -5,6 +5,7 @@ import es.atsistemas.heromaker.model.AbstractEntity;
 import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.repository.CrudRepository;
@@ -23,6 +24,7 @@ public abstract class AbstractService<T extends AbstractEntity, ID> {
         this.clazz = clazz;
     }
 
+    @Cacheable
     public T findById(ID id){
         Optional<T> optional = repository.findById(id);
 
@@ -65,6 +67,7 @@ public abstract class AbstractService<T extends AbstractEntity, ID> {
         return result;
     }
 
+    @Cacheable
     public Iterable<T> findAll(){
         return this.repository.findAll();
     }
