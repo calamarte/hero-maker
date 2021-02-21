@@ -1,21 +1,34 @@
 
-## Hero Maker
-Prueba técnica de backend para [atSitemas](https://www.atsistemas.com/es)
+# Hero Maker
 
-### Reference Documentation
-For further reference, please consider the following sections:
+Backend technical test for [atSitemas](https://www.atsistemas.com/es)
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.4.3/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.4.3/maven-plugin/reference/html/#build-image)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.4.3/reference/htmlsingle/#boot-features-developing-web-applications)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.4.3/reference/htmlsingle/#boot-features-jpa-and-spring-data)
+## Build Setup
 
-### Guides
-The following guides illustrate how to use some features concretely:
+```bash
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
+# Install
+./mvnw install
+
+# Genereate docker image
+./mvnw  docker:build
+```
+
+## Configuration
+
+| Property              | Type   | Default     | Description                                                                                                                |
+|-----------------------|--------|-------------|----------------------------------------------------------------------------------------------------------------------------|
+| server.port           | int    | 8080        | Port to serve.                                                                                                             |
+| users.start.list      | String | admin-admin | Determines which users are created at startup. The format {username-password}. You can add more separating them with one , |
+| token.expiration.time | long   | 60          | Token expiration time in minutes.                                                                                          |
+
+> To change the DB configuration see [Spring](https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html#common-application-properties-data)
+>
+> To change the configuration in the docker container you can mount the **volume** in **/config** 
+
+
+## API Documentation
+
+Hero Maker includes [Swagger](https://swagger.io/) as documentation you can consult it by navigating to **/docs/swagger**
+
 
