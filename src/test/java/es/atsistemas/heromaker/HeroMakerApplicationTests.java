@@ -8,6 +8,7 @@ class HeroMakerApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }
