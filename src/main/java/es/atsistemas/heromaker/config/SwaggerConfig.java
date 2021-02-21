@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 
 @SecurityScheme(
-        name = "JWT",
+        name = "x-api-key",
         type = SecuritySchemeType.APIKEY,
         in = SecuritySchemeIn.HEADER
 )
@@ -21,7 +21,7 @@ import org.springframework.context.annotation.Configuration;
                 title = "Hero Maker",
                 description = "API REST"
         ),
-        security = {@SecurityRequirement(name = "JWT")}
+        security = {@SecurityRequirement(name = "x-api-key")}
 )
 public class SwaggerConfig {
 }

@@ -29,6 +29,7 @@ public class JWTFilter extends OncePerRequestFilter {
             Claims claims = getClaims(httpServletRequest);
 
             if (claims == null) {
+                SecurityContextHolder.clearContext();
                 filterChain.doFilter(httpServletRequest, httpServletResponse);
                 return;
             }
@@ -64,19 +65,15 @@ public class JWTFilter extends OncePerRequestFilter {
     }
 
     private Claims getClaims(HttpServletRequest request) {
-        String token = request.getHeader("Authorization");
-        if (!Strings.isNullOrEmpty(token) && token.startsWith(JWTUtils.getPrefix())) {
-            String[] splitToken = token.split(" ");
+        String token = request.getHeader(JWTUtils.HEADER);
 
-            if(splitToken.length == 2){
-                token = splitToken[1];
-            }else {
-                 return null;
-            }
-
-            return JWTUtils.validateToken(token);
+        Claims claims;
+        try {
+             claims = JWTUtils.validateToken(token);
+        }catch (Exception e){
+             claims = null;
         }
 
-        return null;
+        return claims;
     }
 }

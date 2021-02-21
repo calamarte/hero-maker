@@ -20,24 +20,15 @@ import java.util.stream.Collectors;
 @Component
 public class JWTUtils {
 
-    private static SecretKey SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    public static final String HEADER = "x-api-key";
+    private static final SecretKey SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
     //Minutes
     private static long expirationTime;
-    private static String prefix;
 
     @Value("${token.expiration.time:15}")
     private void setExpirationTime(long expirationTime){
         JWTUtils.expirationTime = expirationTime;
-    }
-
-    @Value("${token.prefix:Bearer}")
-    public void setPrefix(String prefix) {
-        JWTUtils.prefix = prefix;
-    }
-
-    public static String getPrefix() {
-        return prefix;
     }
 
     public static String getToken(String username){
