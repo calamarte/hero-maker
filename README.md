@@ -18,7 +18,7 @@ Backend technical test for [atSitemas](https://www.atsistemas.com/es)
 
 | Property              | Type   | Default     | Description                                                                                                                |
 |-----------------------|--------|-------------|----------------------------------------------------------------------------------------------------------------------------|
-| server.port           | int    | 8080        | Port to serve.                                                                                                             |
+| server.port           | int    | 8080        | Server port.                                                                                                             |
 | users.start.list      | String | admin-admin | Determines which users are created at startup. The format {username-password}. You can add more separating them with one , |
 | token.expiration.time | long   | 60          | Token expiration time in minutes.                                                                                          |
 
